@@ -1,0 +1,45 @@
+#%RAML 1.0 Trait
+queryParameters:
+      number1:
+        required: true
+        type: integer
+      number2:
+        required: true
+        type: integer
+
+responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "results" : " file created"
+              }
+      202:
+        body:
+          application/json:
+            example:
+              {
+                "results" : " file accepted"
+              }        
+      400:
+        body:
+          application/json:
+            example:
+              {
+                "results" : "bad request"
+              }
+      404:
+        body:
+          application/json:
+            example:
+              {
+                "results" : "not found"
+              }
+      500:
+        body:
+          application/json:
+            example:
+              {
+                "results" : "internal server error"
+              }

@@ -1,0 +1,153 @@
+#%RAML 1.0
+title: newcalculator-api
+version: v3
+protocols: [http , https]
+description: this api is used to perform some math operation.
+mediaType: 
+- application/json
+traits:
+  query: !include traits/trait.raml
+/addition:
+  get:
+    is:
+      - query
+    responses:
+          200:
+            body:
+                example: !include examples/addition/addition-get.json
+  post:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/addition/addition-post.json
+  put:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/addition/addition-put.json
+  patch:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/addition/addition-patch.json
+  delete:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/addition/addition-delete.json           
+/subtraction:
+  get:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/subtraction/sub-get.json
+  post:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/subtraction/sub-post.json
+  put:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/subtraction/sub-put.json
+  patch:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/subtraction/sub-patch.json
+  delete:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/subtraction/sub-delete.json                   
+/multiplication:
+  get:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/multiplication/mul-get.json
+  post:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/multiplication/mul-post.json
+  put:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/multiplication/mul-put.json
+  patch:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/multiplication/mul-patch.json
+  delete:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/multiplication/mul-delete.json          
+/division:
+  get:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/division/div-get.json
+  post:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/division/div-post.json
+  put:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/division/div-put.json
+  patch:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/division/div-patch.json
+  delete:
+    is:
+      - query
+    responses:
+      200:
+        body:
+            example: !include examples/division/div-delete.json         

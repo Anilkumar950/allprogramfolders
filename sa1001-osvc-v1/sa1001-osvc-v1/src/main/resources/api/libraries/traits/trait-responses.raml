@@ -1,0 +1,35 @@
+#%RAML 1.0 Trait
+responses:
+  201:
+    body:
+      application/json:
+        example:
+          {
+            "results" : "successfully created"
+          }
+  202:
+    description: |
+      accepted
+  400:
+    description: |
+      bad request
+  401:
+    description: |
+      unauthorized
+  404:
+    description: |
+      not found
+  500:
+    description: |
+      internal server error
+  501:
+    description: |
+      not implemented
+  502:
+    description: |
+      bad request
+  504:
+    description: |
+      gateway timeout    
+
+      

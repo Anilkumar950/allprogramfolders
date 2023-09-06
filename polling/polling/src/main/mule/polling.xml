@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8852683f-70b9-4ca4-9a14-f87a32673b2c" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="mainFlow" doc:id="b41d7c8a-fc98-4134-ad49-0556512bf786" >
+		<http:listener doc:name="Listener" doc:id="2767cbb0-a778-4199-870f-94684146b9ed" config-ref="HTTP_Listener_config" path="mule-api" allowedMethods="GET"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b1b263d8-c1bd-4c5d-abf6-084bec8750d7" message="main-flow"/>
+		<set-variable value="mainflow-variable" doc:name="Set Variable" doc:id="c183b6c8-6112-420b-8757-0fdc5e02d925" variableName="mainvar" />
+		<logger level="INFO" doc:name="Logger" doc:id="5f86970c-616b-43e6-8d4c-eaba69c15f57" message="flow1"/>
+		<async doc:name="Async" doc:id="a5ac6549-5669-43ef-81b2-abb23f4782d0" >
+			<flow-ref doc:name="subflow" doc:id="713dee59-c644-4638-a18a-3556a7e0362f" name="Sub_Flow" />
+		</async>
+		<logger level="INFO" doc:name="Logger" doc:id="ef123abc-b4da-4ce3-a778-e35786ba5cdc" message="mainflow2"/>
+		<flow-ref doc:name="Flow Reference" doc:id="a41e4106-c2b3-434e-9c5c-c1ce2efb241a" name="privateflow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="d679e76d-3018-48bb-813a-343adcdb43e8" message="mainflow3  and private-variable is: #[vars.privatevar]"/>
+	</flow>
+	<sub-flow name="Sub_Flow" doc:id="13f8c5f9-0c59-4b73-9dfd-066cd53633de" >
+		<logger level="INFO" doc:name="Logger" doc:id="32853a57-7a61-477d-9a3e-58bdf900f94a" message="subflow1"/>
+		<logger level="INFO" doc:name="Logger" doc:id="163411b8-227f-4ad9-b97a-677c150ed919" message="subflow2 and mainflow-variable is: #[vars.mainvar]" />
+	</sub-flow>
+	<flow name="privateflow" doc:id="0d54c73c-2a11-4b97-a6af-8621ae1b2160" >
+		<logger level="INFO" doc:name="Logger" doc:id="e4f1e7d5-7db9-4ffa-b5de-7dee283749fe" message="private1"/>
+		<set-variable value="private-variable" doc:name="Set Variable" doc:id="c2cb943d-19c0-4bbc-b3a1-1515d2c65fed" variableName="privatevar"/>
+		<logger level="INFO" doc:name="Logger" doc:id="3b74f5ab-df4c-4b5b-b3cb-fed1c124c159" message="private2"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4438fda3-b2d5-4446-ac05-4cb88c82df5c" message="private3"/>
+	</flow>
+</mule>

@@ -1,0 +1,14 @@
+{
+	"name": "narendra",
+	"sfdcid": 1234567,
+	"status": "active",
+	"timezone": "america",
+	"address1": "sa",
+	"address2": "la",
+	"address3": "ma",
+	"city": "Hyannis",
+	"state": "america",
+	"postalcode": "56008",
+	"country": "Hyannis-avm",
+	"activecontracts": true
+}

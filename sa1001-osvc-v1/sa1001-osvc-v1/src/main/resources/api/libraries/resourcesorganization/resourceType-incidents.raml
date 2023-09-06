@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+post:
+    description: incidents is created.
+    is: [traitsresponses, traitsheader]
+    body:
+        type: datatypeincidents
+        example: !include ../../examples/OrganizationRequest/incidentsrequest.json
+    responses:
+      200:
+        body:
+            example: !include ../../examples/OrganixationResponse/incidentsresponses.json

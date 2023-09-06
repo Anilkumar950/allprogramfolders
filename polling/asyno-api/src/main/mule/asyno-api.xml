@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a5174d10-6c88-4571-802f-7c92d5b7720f" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="asyno-apiFlow" doc:id="343ba964-c8e5-48d2-bea9-feae3649e9c5" >
+		<http:listener doc:name="Listener" doc:id="873d01b6-8ecf-4ee4-869b-b665cc15cd6b" config-ref="HTTP_Listener_config" path="asyno"/>
+		<logger level="INFO" doc:name="Logger" doc:id="2f1dd139-e6ce-4e35-96aa-a4ba0bb55add" message="start"/>
+		<logger level="INFO" doc:name="Logger" doc:id="636eb506-740e-4da1-bb19-c1cf3f8060ab" message="one"/>
+		<async doc:name="Async" doc:id="f4d06c5d-b022-4a7f-888a-b892f13fd882" >
+			<logger level="INFO" doc:name="Logger" doc:id="a2a922dd-9b86-4179-8c82-7fdeaa5aef13" message="two"/>
+			<logger level="INFO" doc:name="Logger" doc:id="17f8c03a-a216-4f51-b6ba-655cb1a7d164" message="three"/>
+			<logger level="INFO" doc:name="Logger" doc:id="33dee437-a335-4c78-8376-45980e3bd743" message="four"/>
+		</async>
+		<flow-ref doc:name="Flow Reference" doc:id="45c5397f-cced-4319-a2b5-4dc9098c4f9e" name="subflow"/>
+		<flow-ref doc:name="Flow Reference" doc:id="89a881c7-754a-472a-bbdb-9db1d11fc60a" name="privateflow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="33cd16be-eb15-468a-9aa4-1690171fdab2" message="five"/>
+	</flow>
+</mule>

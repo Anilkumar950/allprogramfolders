@@ -1,0 +1,25 @@
+#%RAML 1.0
+title: gmail
+description: this api is used to Gmail Receipts for invoive and Transaction in the ABC System.
+protocols: [HTTP, HTTPS]
+mediaType: application/json
+version: v3
+traits:
+  anil: !include traits/traits1.raml
+securitySchemes:
+  anilkumar: !include securityscheme/securityScheme.raml
+securedBy:
+    - anilkumar  
+/Gmail/sendGmail:
+  post:
+    is:
+      - anil
+    description: This API is for sending receipt Gmail for transactions and invoices.
+    body:
+      type: !include datatypes/dataType.raml
+      example: !include examples/request/gmailrequest.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/response/gmailresponse.json       

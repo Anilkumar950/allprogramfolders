@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f089df72-a289-46be-a089-15943984a443" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="c905342a-a13f-4ebf-ae3a-61830ab7c7e3" file="dev.yaml" key="anilkumar" >
+		<secure-properties:encrypt algorithm="Blowfish" />
+	</secure-properties:config>
+	<flow name="apple-banana-choiceFlow" doc:id="325a5a2e-00d0-4c0e-9ec5-6c910c937bc2" >
+		<http:listener doc:name="Listener" doc:id="5b1192e9-e1a8-4a96-8c93-265f36dce1c8" config-ref="HTTP_Listener_config" path="${http.path}"/>
+		<set-variable value="#[attributes.queryParams.fruit]" doc:name="Set Variable" doc:id="35e61733-5e7b-41e3-9ab5-83368be0f47b" variableName="fruit"/>
+		<choice doc:name="Choice" doc:id="b17bceba-14d5-476e-9eae-0417be0e6c80" >
+			<when expression='#[vars.fruit == "banana"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="7722b4f5-c2b8-4121-b84c-93ca2ec4cfb6" message="this is banana"/>
+			</when>
+			<when expression='#[vars.fruit == "apple"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="b97f1965-980f-4deb-bf98-42a16a0a9566" message="this is apple"/>
+			</when>
+			<when expression='#[vars.fruit == "mango"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="4622a193-f84a-42e8-bb51-df1dd23c125c" message="this is mango"/>
+			</when>
+			<when expression='#[vars.fruit == "grapes"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="8a9e16f8-fdea-43ba-afde-99537f722e6c" message="this is grapes"/>
+			</when>
+			<otherwise >
+				<logger level="INFO" doc:name="Logger" doc:id="9870b58b-8267-4176-ac91-20eb544a7c7f" message="this is default"/>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>

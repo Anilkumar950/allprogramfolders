@@ -1,0 +1,24 @@
+#%RAML 1.0
+title: sa1001-osvc-v1.[osvc system api to manage resources in oracle service cloud]
+protocols: [HTTP, HTTPS]
+version: v2
+#change log
+#created by Anilkumar.v on 11-nov-2022 added post/organization resource
+mediaType: 
+- application/json
+description: osvc system api managing organization.
+traits:
+  traitsresponses: !include libraries/traits/trait-responses.raml
+  traitsheader: !include libraries/traits/trait.raml 
+types:
+  datatypeorganization: !include libraries/datatypes/datatypesrequest/dataType.raml
+  datatypeincidents: !include libraries/datatypes/datatypesrequest/incidents-dataType.raml
+resourceTypes:
+  resoure: !include libraries/resourcesorganization/resourceType.raml
+  incidents-resource: !include libraries/resourcesorganization/resourceType-incidents.raml
+/organization:
+  type:
+    resoure
+/incidents:
+  type:
+    incidents-resource

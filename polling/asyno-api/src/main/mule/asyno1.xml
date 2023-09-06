@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="privateflow" doc:id="7c289c4d-1239-436a-ab0a-1b46ebd21bbf" >
+		<logger level="INFO" doc:name="Logger" doc:id="f8aea9dd-66f7-4841-abae-8e206ff7d2a8" message="hey this is privateflow1"/>
+		<logger level="INFO" doc:name="Logger" doc:id="33d88015-acf3-4f8c-8fcf-0d89c0f147ac" message="hey this is privateflow2"/>
+		<logger level="INFO" doc:name="Logger" doc:id="0c6236ad-55cf-4f43-8103-56947dd71528" message="hey this is privateflow3"/>
+		<logger level="INFO" doc:name="Logger" doc:id="65bb34f9-43e3-4ffa-801f-c5a2877dcbc6" message="hey this is privateflow4"/>
+	</flow>
+</mule>

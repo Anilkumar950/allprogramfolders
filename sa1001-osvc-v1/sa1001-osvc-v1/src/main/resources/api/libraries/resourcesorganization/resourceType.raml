@@ -1,0 +1,13 @@
+#%RAML 1.0 ResourceType
+post:
+    description: osvc system api managing organization.
+    is: [traitsresponses, traitsheader]
+    body:
+        type: datatypeorganization
+        example: !include ../../examples/OrganizationRequest/organizationrequest.json
+    responses:
+      200:
+        body:
+            example: !include ../../examples/OrganixationResponse/organizationresponse.json
+
+          

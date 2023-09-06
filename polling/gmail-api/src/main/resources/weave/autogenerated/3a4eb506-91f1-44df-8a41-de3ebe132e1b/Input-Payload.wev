@@ -1,0 +1,9 @@
+%dw 2.0
+
+type auto_3a4eb506_91f1_44df_8a41_de3ebe132e1b_Input_Payload = {
+  ModuleType: Number, 
+  Recipients: Array<Any> {"description": "List of recipient email addresses."}, 
+  id: String, 
+  _?: Any
+}
+
